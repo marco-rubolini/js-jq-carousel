@@ -36,6 +36,7 @@
     width: 90%;
     text-align: center;
     overflow: hidden;
+    position: relative;
 }
 
 .slide img {
@@ -46,4 +47,20 @@
 
 .slide img.active {
     display: inline-block;
+}
+
+.pulsanti {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pulsanti i {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.pulsanti i.active {
+    color: white;
 }
