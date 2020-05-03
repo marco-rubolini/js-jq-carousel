@@ -77,6 +77,6 @@ $('.fa-circle').click(function() {
     $('.fa-circle.active').eq(current_img).removeClass('active');
     $(this).addClass("active");
     $('img.active').eq(current_img).removeClass('active');
-    current_img=+$(this).data('num')-1;
+    current_img=+$(this).data('num');
 	$('img').eq(current_img).addClass('active');
 })
