@@ -71,12 +71,18 @@ $('.prev').click(function() {
     }
 
 })
-
+// intercetto il click sul pallino
 $('.fa-circle').click(function() {
+    // Imposto una variabile che rappresenta l'indice delle immagini che parte da 0
     var current_img = 0;
+    // rimuovo dal pallino attivo con indice 0 la classe active
     $('.fa-circle.active').eq(current_img).removeClass('active');
+    //aggiungo al pallino cliccato la classe active
     $(this).addClass("active");
+    // rimuovo dall'immagine con indice 0 la classe attiva
     $('img.active').eq(current_img).removeClass('active');
+    // imposto il valore nuovo dell'indice delle immagini prendendo i dati dal data-num dell'html
     current_img=+$(this).data('num');
+    //aggiungo la classe active all'immagine nuova corrente
 	$('img').eq(current_img).addClass('active');
 })
