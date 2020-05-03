@@ -5,15 +5,15 @@ $('.next').click(function() {
     var currentImage = $('img.active');
     // Recupero il pallino corrente
     var currentCircle = $('.fa-circle.active');
-    console.log(currentImage);
+
     // rimuovo la classe active dall'immagine corrente
     currentImage.removeClass('active');
-    console.log(currentImage);
+
     // rimuovo la classe active dal pallino corrente
     currentCircle.removeClass('active');
     // Recupero l'immagine successiva
     var nextImage = currentImage.next('img');
-    console.log(nextImage);
+
     // Recupero il pallino successivo
     var nextCircle = currentCircle.next('.fa-circle');
     // Verifico se esiste un'immagine successiva
@@ -40,17 +40,17 @@ $('.next').click(function() {
 $('.prev').click(function() {
     // Recupero l'immagine che ha la clase active ora
     var currentImage = $('img.active');
-    console.log(currentImage);
+
     // Recupero il pallino che ha la classe active ora
     var currentCircle = $('.fa-circle.active');
     // rimuovo la classe active dall'immagine corrente
     currentImage.removeClass('active');
-    console.log(currentImage);
+
     // rimuovo la classe active dal pallino corrente
     currentCircle.removeClass('active');
     // Recupero l'immagine precedente
     var prevImage = currentImage.prev('img');
-    console.log(prevImage);
+
     // Recupero il pallino precedente
     var prevCircle = currentCircle.prev('.fa-circle');
     // Verifico se esiste un'immagine precedente
@@ -67,7 +67,16 @@ $('.prev').click(function() {
         prevImage.addClass('active');
         // non c'è un pallino precedente
         // riparto dall'ultimo
-        $('.fa-circle:last-of-type').addClass('active')
+        $('.fa-circle:last-child').addClass('active')
     }
 
+})
+
+$('.fa-circle').click(function() {
+    var current_img = 0;
+    $('.fa-circle.active').eq(current_img).removeClass('active');
+    $(this).addClass("active");
+    $('img.active').eq(current_img).removeClass('active');
+    current_img=+$(this).data('num')-1;
+	$('img').eq(current_img).addClass('active');
 })
