@@ -56,11 +56,22 @@
     transform: translateX(-50%);
 }
 
-.pulsanti i {
+.pulsanti i, .controller i {
     cursor: pointer;
     margin: 0 5px;
 }
 
 .pulsanti i.active {
     color: white;
+}
+
+.controller {
+    width: 100%;
+    text-align: center;
+    float: left;
+    margin: 10px 0;
+}
+
+.controller .play {
+    display: none;
 }

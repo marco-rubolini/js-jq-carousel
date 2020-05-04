@@ -1,5 +1,4 @@
-// Intercetto il click sulla classe next
-
+// Imposto l'azione con il clik su pulsante prev
 $('.next').click(function() {
     // Recupero l'immagine che ha la clase active ora
     var currentImage = $('img.active');
@@ -36,7 +35,7 @@ $('.next').click(function() {
 
 })
 
-
+// Imposto l'azione con il clik su pulsante prev
 $('.prev').click(function() {
     // Recupero l'immagine che ha la clase active ora
     var currentImage = $('img.active');
@@ -85,4 +84,89 @@ $('.fa-circle').click(function() {
     current_img=+$(this).data('num');
     //aggiungo la classe active all'immagine nuova corrente
 	$('img').eq(current_img).addClass('active');
-})
+});
+
+var clock = setInterval(function() {
+    var currentImage = $('img.active');
+    // Recupero il pallino corrente
+    var currentCircle = $('.fa-circle.active');
+
+    // rimuovo la classe active dall'immagine corrente
+    currentImage.removeClass('active');
+
+    // rimuovo la classe active dal pallino corrente
+    currentCircle.removeClass('active');
+    // Recupero l'immagine successiva
+    var nextImage = currentImage.next('img');
+
+    // Recupero il pallino successivo
+    var nextCircle = currentCircle.next('.fa-circle');
+    // Verifico se esiste un'immagine successiva
+    if (nextImage.length != 0) {
+        // è presente un'immagine successiva
+        // aggiungo la classe active all'immagine successiva
+        nextImage.addClass('active');
+        // aggiungo la classe active al pallino successivo
+        nextCircle.addClass('active');
+    } else {
+        // non c'è un'immagine successiva
+        // Riparto dalla prima immagine
+        nextImage = $('img:first-child');
+        nextImage.addClass('active');
+
+        // non c'è un pallino successivo
+        // riparto dal primo
+        $('.fa-circle:first-child').addClass('active')
+    }
+}, 3000);
+// intercetto il clik sul pulsante pausa
+$('.pause').click(function(){
+    // interrompo la funzione setInterval
+    clearInterval(clock);
+    // mostro il pulsante play
+    $('.controller .play').show();
+    // nascondo il pulsante pausa
+    $('.controller .pause').hide();
+});
+
+// intercetto il clik sul pulsante play
+$('.play').click(function(){
+    // nascondo il pulsante play
+    $('.controller .play').hide();
+    // visualizzo il pulsante pause
+    $('.controller .pause').show();
+    // imposto la funzione setInterval al click del pulsante play
+    clock = setInterval(function() {
+        var currentImage = $('img.active');
+        // Recupero il pallino corrente
+        var currentCircle = $('.fa-circle.active');
+
+        // rimuovo la classe active dall'immagine corrente
+        currentImage.removeClass('active');
+
+        // rimuovo la classe active dal pallino corrente
+        currentCircle.removeClass('active');
+        // Recupero l'immagine successiva
+        var nextImage = currentImage.next('img');
+
+        // Recupero il pallino successivo
+        var nextCircle = currentCircle.next('.fa-circle');
+        // Verifico se esiste un'immagine successiva
+        if (nextImage.length != 0) {
+            // è presente un'immagine successiva
+            // aggiungo la classe active all'immagine successiva
+            nextImage.addClass('active');
+            // aggiungo la classe active al pallino successivo
+            nextCircle.addClass('active');
+        } else {
+            // non c'è un'immagine successiva
+            // Riparto dalla prima immagine
+            nextImage = $('img:first-child');
+            nextImage.addClass('active');
+
+            // non c'è un pallino successivo
+            // riparto dal primo
+            $('.fa-circle:first-child').addClass('active')
+        }
+    }, 3000);
+});
